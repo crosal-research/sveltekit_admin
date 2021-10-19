@@ -1,0 +1,11 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+
+ @layer components { 
+
+		   /* .btnsub {
+		       @apply my-1 py-2 w-20 rounded bg-blue-500 text-white;
+		   }  */
+		   } 

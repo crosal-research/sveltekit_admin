@@ -1,0 +1,23 @@
+<script lang="ts">
+ 
+let inflation:string = ""
+
+
+
+$: {
+     console.log(inflation)
+
+}
+
+</script>
+<div class="flex justify-center">
+    <div class="grid content-center grid-cols-2 ring-2 p-4">
+	<div>
+	    <input type=radio bind:group={inflation} value={"IPCA"} /> IPCA
+	</div>
+	<div>
+	    <input type="radio" bind:group={inflation} value={"IPCA-15"} /> IPCA-15
+	</div>
+    </div>
+
+</div>	

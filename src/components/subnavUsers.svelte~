@@ -1,0 +1,17 @@
+<script lang="ts">
+ type navSide = "Search"
+ let current:navSide = "Search"
+</script>
+
+<nav class="flex align-left w-ufll my-8 text-xl"> 
+    <a class="mx-4 rounded" class:active="{current==='Search'}" 
+       on:click="{() => current = 'Search'}" href="/users/">Search</a>
+</nav>
+
+<style>
+ 
+ .active {
+     @apply bg-red-500 text-white;
+ }
+
+</style>

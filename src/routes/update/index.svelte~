@@ -1,0 +1,63 @@
+<script lang="ts">
+import Obs from "../../components/observations.svelte"
+
+
+ type survey = {
+     name: string
+     info: [string, string, string]
+ }
+
+ let surveys: survey[] =
+     [{name:"BCB-Fiscal", info:["BCB", "FISCAL", "SERIES-TEMPORIAS"]}, 
+ 	 {name:"BCB-Credit", info:["BCB", "MERCADO-ABERTO",  "TITULOS-PUBLICOS"]}, 
+ 	 {name:"BCB-Externo", info:["BCB", "SETOR-EXTERNO",  "SERIES-TEMPORAIS"]}, 
+ 	 {name:"BCB-Econ", info:["BCB", "ECON",  "SERIES-TEMPORAIS"]}, 
+ 	 {name:"IBGE-PIM", info:["IBGE", "PIM",  "SERIES-TEMPORAIS"]}, 
+ 	 {name:"IBGE-PMS", info:["IBGE", "PMS",  "SERIES-TEMPORAIS"]}, 
+ 	 {name:"CEPEA", info:["CEPEA", "AGRI", "SERIES-TEMPORAIS"]}, 
+ 	 {name:"IBGE-PMC",  info:["IBGE", "PMC", "SERIES-TEMPORAIS"]}, 
+ 	 {name:"IBGE-CN", info: ["IBGE", "CN",  "SERIES-TEMPORAIS"]}, 
+ 	 {name:"BEA-GDP", info:["BEA", "U.S. GDP", "SERIES-TEMPORAIS"]}, 
+ 	 {name:"BEA-SPENDING", info:["BEA", "U.S. PERSONAL CONSUMER-SPENDING", "SERIES-TEMPORAIS"]}]
+
+ let srs:string = "BCB-Fiscal"
+
+ type observations = "Last" | "Last-10" | "All"
+ let obs:observations = "Last"
+
+ function submit():void {
+     let s = surveys.filter((s) => s.name === srs)
+     console.log(s[0].info)
+     console.log(obs)
+ }
+
+
+</script>
+
+<div class="flex">
+    <div class="">
+	<!-- Surveys -->
+	{#each surveys as survey}
+	    <div class="my-1">
+		<input type=radio bind:group={srs} value={survey.name} /> {survey.name}
+	    </div>
+	{/each}
+
+	<!-- Observations -->
+	<div class="flex-row my-4">
+	    <Obs numberObs={obs} />
+	</div>
+
+	<button class="btnsub" on:click={submit}>
+	    Submit
+	<button/>
+    </div>
+</div>
+
+<style>
+
+ .btnsub {
+     @apply my-1 py-2 w-20 rounded bg-blue-500 text-white;
+ }
+
+</style>

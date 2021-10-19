@@ -1,0 +1,45 @@
+<script lang="ts">
+ import {goto} from '$app/navigation'
+ import {logged, currentPage} from "../stores"
+
+ let username:string = ""
+ let password:string = ""
+
+ function submit(): void {
+     if (username === "admin" & password === "admin"){
+	 logged.set(true)
+	 currentPage.set("Update")
+	 goto("/update")
+     }
+     else {
+	 console.log("Try again")
+     }
+ }
+
+ </script>
+
+
+ <div  class="flex-rows">
+     <div class="text-left border-content
+		 font-serif text-2xl row-start-1 row-span-1">
+	 <h1>Welcome to the admin Interface!</h1> 
+	 <p>This is the place to update the app's database and to check
+	     the clients' profile</p>
+
+     </div>
+
+     <div  class="grid justify-center my-16 mx-2">
+	 <input class="border-2 my-1 p-1 w-60 rounded" 
+		       type="text" placeholder="Username" bind:value={username} /> 
+	 <input class="border-2 my-1 p-1 w-60 rounded" 
+		       type="password" placeholder="Password" bind:value={password} />
+	 <button class="btnsub" on:click={submit}>
+	     Log In
+	     <button/>
+     </div>
+ </div>
+
+<style>
+
+ 
+</style>
